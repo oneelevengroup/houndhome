@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import EmbedSlot from '../components/EmbedSlot.astro';
+import { site } from '../data/site';
+
+const steps = [
+  {
+    n: '1',
+    title: 'Tell me about your dog',
+    body: 'Share a few details through a short, friendly inquiry form. The more I know going in, the more useful our conversation will be.',
+  },
+  {
+    n: '2',
+    title: 'We talk it through',
+    body: 'Book a quick consultation. We’ll talk about your dog, your goals, and what’s actually going on, no scripts and no pressure.',
+  },
+  {
+    n: '3',
+    title: 'We match you to the right program',
+    body: 'Together we land on the program that makes sense for where you and your dog are today. Honest guidance, every time.',
+  },
+];
+---
+
+<BaseLayout
+  title="Booking"
+  description="Reaching out should be the easy part. Tell me about your dog, book a consultation, and we'll find the program that fits."
+>
+  <PageHero
+    eyebrow="Booking"
+    title="Let’s find the right fit for your dog."
+    intro="Reaching out should be the easy part. Tell me a little about your dog, book a quick consultation, and I will help you choose the program that actually makes sense for where you both are. No pressure, no scripts, just a conversation."
+  />
+
+  <!-- Three honest steps -->
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <ol class="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
+      {
+        steps.map((s) => (
+          <li class="reveal rounded-2xl border border-ink/8 bg-white p-7 shadow-card">
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-teal font-display text-h3 text-cream">
+              {s.n}
+            </span>
+            <h2 class="mt-4 font-display text-h3 text-teal">{s.title}</h2>
+            <p class="mt-2 text-caption text-ink/75">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- Step 1 embed: HoneyBook inquiry -->
+  <section class="px-5 pt-16 sm:px-8 sm:pt-24" id="inquiry">
+    <div class="mx-auto max-w-3xl">
+      <div class="reveal mb-6 text-center">
+        <p class="label-caps text-camel">Step one</p>
+        <h2 class="mt-2 font-display text-h1 text-teal">Tell me about your dog</h2>
+        <p class="mx-auto mt-3 max-w-xl text-body text-ink/75">
+          A short inquiry to get us started. Prefer a longer questionnaire? It’s
+          built into the same intake once you reach out.
+        </p>
+      </div>
+      <div class="reveal">
+        <EmbedSlot
+          type="honeybook"
+          src={site.embeds.honeybookInquiry}
+          title="Start your inquiry"
+          height={760}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 2 embed: Calendly consult -->
+  <section class="px-5 pt-16 sm:px-8 sm:pt-24" id="consult">
+    <div class="mx-auto max-w-3xl">
+      <div class="reveal mb-6 text-center">
+        <p class="label-caps text-camel">Step two</p>
+        <h2 class="mt-2 font-display text-h1 text-teal">Book your consultation</h2>
+        <p class="mx-auto mt-3 max-w-xl text-body text-ink/75">
+          Pick a time that works for you. We’ll talk it through and figure out
+          the right next step together.
+        </p>
+      </div>
+      <div class="reveal">
+        <EmbedSlot
+          type="calendly"
+          src={site.embeds.calendly}
+          title="Schedule a consult"
+          height={700}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="px-5 pt-16 sm:px-8 sm:pt-20">
+    <p class="reveal mx-auto max-w-xl text-center text-caption text-ink/60">
+      Prefer to talk first? Call or text
+      <a href={site.phoneHref} class="link-underline">{site.phone}</a>. I’d love to
+      hear about your dog.
+    </p>
+  </section>
+
+  <div class="pt-12"></div>
+</BaseLayout>

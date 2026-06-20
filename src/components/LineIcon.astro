@@ -1,0 +1,79 @@
+---
+// Single-line spot graphics drawn in one consistent stroke weight, echoing the
+// logo's drawn quality (CLAUDE.md §2 signature). Decorative by default, so
+// aria-hidden unless a title is supplied.
+interface Props {
+  name: 'paw' | 'leaf' | 'bone' | 'house' | 'heart' | 'compass';
+  class?: string;
+  title?: string;
+  stroke?: string;
+}
+const { name, class: className = '', title, stroke = 'currentColor' } = Astro.props;
+const common = {
+  fill: 'none',
+  stroke,
+  'stroke-width': 1.6,
+  'stroke-linecap': 'round',
+  'stroke-linejoin': 'round',
+};
+---
+
+<svg
+  viewBox="0 0 48 48"
+  class={className}
+  role={title ? 'img' : 'presentation'}
+  aria-hidden={title ? undefined : 'true'}
+  aria-label={title}
+  {...common}
+>
+  {title && <title>{title}</title>}
+  {
+    name === 'house' && (
+      <path d="M8 22 24 8l16 14v17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z" />
+    )
+  }
+  {
+    name === 'paw' && (
+      <g>
+        <ellipse cx="24" cy="31" rx="8" ry="6.5" />
+        <circle cx="14.5" cy="22" r="3.2" />
+        <circle cx="33.5" cy="22" r="3.2" />
+        <circle cx="20" cy="16.5" r="3" />
+        <circle cx="28" cy="16.5" r="3" />
+      </g>
+    )
+  }
+  {
+    name === 'leaf' && (
+      <g>
+        <path d="M14 34c0-12 10-20 20-20 0 12-8 20-20 20Z" />
+        <path d="M19 29 31 19" />
+      </g>
+    )
+  }
+  {
+    name === 'bone' && (
+      <g>
+        <path d="M16 21h16" />
+        <path d="M16 27h16" />
+        <circle cx="13" cy="20" r="3.6" />
+        <circle cx="13" cy="28" r="3.6" />
+        <circle cx="35" cy="20" r="3.6" />
+        <circle cx="35" cy="28" r="3.6" />
+      </g>
+    )
+  }
+  {
+    name === 'heart' && (
+      <path d="M24 36S10 28 10 19a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 9-14 17-14 17Z" />
+    )
+  }
+  {
+    name === 'compass' && (
+      <g>
+        <circle cx="24" cy="24" r="15" />
+        <path d="m30 18-4 8-8 4 4-8 8-4Z" />
+      </g>
+    )
+  }
+</svg>

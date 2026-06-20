@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import EmbedSlot from '../components/EmbedSlot.astro';
+import LineIcon from '../components/LineIcon.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Reach Hound & Home in Ararat, VA. Call, email, or send a message and we'll be in touch."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Let’s talk about your dog."
+    intro="The easiest way to start is a quick message or a call. I read everything that comes in and I’ll get back to you personally."
+  />
+
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <div class="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <!-- Details -->
+      <div class="reveal space-y-7">
+        <div class="flex gap-4">
+          <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage-soft/70">
+            <LineIcon name="compass" class="h-5 w-5 text-teal" />
+          </span>
+          <div>
+            <h2 class="font-display text-h3 text-teal">Visit</h2>
+            <p class="mt-1 text-caption text-ink/75">{site.address.street}<br />{site.address.city}, {site.address.region} {site.address.postalCode}</p>
+            <p class="mt-1 text-caption text-ink/55">Near the Mount Airy, NC border. Board-and-train families travel here.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage-soft/70">
+            <LineIcon name="heart" class="h-5 w-5 text-teal" />
+          </span>
+          <div>
+            <h2 class="font-display text-h3 text-teal">Call or text</h2>
+            <p class="mt-1 text-caption">
+              <a href={site.phoneHref} class="link-underline">{site.phone}</a>
+            </p>
+            <p class="mt-1 text-caption text-ink/55">Email address coming soon.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage-soft/70">
+            <LineIcon name="house" class="h-5 w-5 text-teal" />
+          </span>
+          <div>
+            <h2 class="font-display text-h3 text-teal">Hours</h2>
+            <ul class="mt-1 space-y-0.5 text-caption text-ink/75">
+              {
+                site.hours.map((h) => (
+                  <li class="flex justify-between gap-6">
+                    <span>{h.days}</span>
+                    <span class="text-ink/55">{h.time}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- HoneyBook contact form -->
+      <div class="reveal">
+        <EmbedSlot
+          type="honeybook"
+          src={site.embeds.honeybookContact}
+          title="Send a message"
+          height={620}
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="pt-20"></div>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import { site, nav } from '../data/site';
+import EmailSignup from './EmailSignup.astro';
+import LineIcon from './LineIcon.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 bg-teal text-cream">
+  <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1.1fr_1fr_1.2fr]">
+      <!-- Brand + NAP -->
+      <div>
+        <div class="flex items-center gap-3">
+          <LineIcon name="house" class="h-8 w-8 text-cream" />
+          <span class="font-display text-h2 text-cream">Hound &amp; Home</span>
+        </div>
+        <p class="mt-1 label-caps text-sage">{site.tagline}</p>
+        <address class="mt-5 space-y-1.5 not-italic text-caption text-cream/80">
+          <p>{site.address.street}</p>
+          <p>{site.address.city}, {site.address.region} {site.address.postalCode}</p>
+          <p>
+            <a href={site.phoneHref} class="transition hover:text-cream">{site.phone}</a>
+          </p>
+          <p>
+            <span class="text-cream/55">Email coming soon</span>
+          </p>
+        </address>
+        <div class="mt-5 flex gap-3" aria-label="Social media">
+          <!-- Social handle pending (§9). Placeholder so the slot is built. -->
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-cream/25 text-cream/50" title="Instagram handle coming soon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <nav aria-label="Footer">
+        <h2 class="label-caps text-sage">Explore</h2>
+        <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2.5 text-caption">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} class="text-cream/80 transition hover:text-cream">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/booking" class="text-cream/80 transition hover:text-cream">Booking</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Email capture -->
+      <div>
+        <EmailSignup variant="footer" heading="Stay in the loop" blurb="The occasional note on openings, tips, and when daycare and boarding go live. No spam, ever." />
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col gap-3 border-t border-cream/15 pt-6 text-caption text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Hound &amp; Home. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="/privacy" class="transition hover:text-cream">Privacy Policy</a>
+        <a href="/terms" class="transition hover:text-cream">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>

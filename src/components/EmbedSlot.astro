@@ -1,0 +1,48 @@
+---
+// Wraps a third-party embed (HoneyBook form, Calendly scheduler). When the URL
+// isn't wired yet (§7/§9), it shows a clear, branded placeholder with a working
+// fallback action (phone/email) so the page is never a dead end before launch.
+import { site } from '../data/site';
+import LineIcon from './LineIcon.astro';
+interface Props {
+  type: 'honeybook' | 'calendly';
+  src?: string;
+  title: string;
+  height?: number;
+}
+const { type, src, title, height = 720 } = Astro.props;
+const wired = Boolean(src);
+const label =
+  type === 'calendly' ? 'Calendly consult scheduler' : 'HoneyBook form';
+---
+
+{
+  wired ? (
+    <div class="overflow-hidden rounded-2xl border border-ink/8 bg-white shadow-card">
+      <iframe
+        src={src}
+        title={title}
+        loading="lazy"
+        class="w-full"
+        style={`height:${height}px;border:0;`}
+      />
+    </div>
+  ) : (
+    <div class="flex flex-col items-center rounded-2xl border border-dashed border-teal/25 bg-sage-soft/40 p-8 text-center sm:p-12">
+      <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white">
+        <LineIcon name={type === 'calendly' ? 'compass' : 'heart'} class="h-7 w-7 text-teal" />
+      </span>
+      <h3 class="mt-5 font-display text-h3 text-teal">{title}</h3>
+      <p class="mt-2 max-w-md text-caption text-ink/70">
+        The {label} will embed right here once Taylor’s account is connected. In
+        the meantime, reach out directly and we’ll get you started.
+      </p>
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+        <a href={site.phoneHref} class="btn btn-primary">Call {site.phone}</a>
+      </div>
+      <p class="mt-3 text-[0.75rem] uppercase tracking-wide text-ink/40">
+        Embed slot ready · {label}
+      </p>
+    </div>
+  )
+}

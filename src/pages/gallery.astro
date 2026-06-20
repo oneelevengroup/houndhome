@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import HouseArch from '../components/HouseArch.astro';
+import LineIcon from '../components/LineIcon.astro';
+import CTASection from '../components/CTASection.astro';
+
+// Placeholder slots until the brand shoot lands (§9). Each becomes a real photo
+// by passing `image` to HouseArch. Built to accept video later (§5, nice-to-have).
+const slots = [
+  { caption: 'Trail time', icon: 'leaf' },
+  { caption: 'Evening brush-out', icon: 'heart' },
+  { caption: 'Calm, safe rest', icon: 'house' },
+  { caption: 'Foundation training', icon: 'paw' },
+  { caption: 'Homemade treats', icon: 'bone' },
+  { caption: 'A happy go-home', icon: 'compass' },
+] as const;
+---
+
+<BaseLayout
+  title="Gallery"
+  description="Real dogs, real stays. A look at the structured, enriching days at Hound & Home."
+>
+  <PageHero
+    eyebrow="Past Work"
+    title="Real dogs, real stays."
+    intro="A look at day-to-day life here: structured, enriching, and calm. Photos from the brand shoot are on the way."
+  />
+
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <div class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        slots.map((s) => (
+          <figure class="reveal">
+            <HouseArch class="aspect-[4/5] w-full">
+              <div class="flex flex-col items-center">
+                <LineIcon name={s.icon} class="h-9 w-9 text-sage" />
+                <p class="mt-3 text-caption font-semibold text-teal">{s.caption}</p>
+              </div>
+            </HouseArch>
+          </figure>
+        ))
+      }
+    </div>
+    <p class="reveal mx-auto mt-10 max-w-xl text-center text-caption text-ink/55">
+      Image and video slots are built and ready. Real media from the brand shoot
+      drops straight into these frames.
+    </p>
+  </section>
+
+  <div class="pt-20"></div>
+  <CTASection />
+  <div class="pt-12"></div>
+</BaseLayout>

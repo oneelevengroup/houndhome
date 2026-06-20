@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Privacy Policy" noindex={true}>
+  <PageHero eyebrow="Legal" title="Privacy Policy" align="left" />
+  <section class="px-5 pt-10 sm:px-8 sm:pt-12">
+    <div class="mx-auto max-w-prose space-y-4 text-body text-ink/75">
+      <p class="rounded-xl bg-camel/10 px-5 py-4 text-caption text-ink/70">
+        Placeholder. One Eleven Group will provide the final Privacy Policy before
+        launch (CLAUDE.md §4).
+      </p>
+      <p>
+        This page will describe what information Hound &amp; Home collects through
+        its forms and email signups, how it is used, and how it is protected.
+      </p>
+    </div>
+  </section>
+  <div class="pt-24"></div>
+</BaseLayout>

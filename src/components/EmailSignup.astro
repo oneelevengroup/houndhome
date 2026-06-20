@@ -1,0 +1,69 @@
+---
+import { site } from '../data/site';
+// Email capture → Brevo (CLAUDE.md §7). Until the Brevo form action is wired
+// (site.embeds.brevoSignup), this posts nowhere and shows a gentle note so it
+// is obviously a placeholder, never a silently-broken form.
+interface Props {
+  variant?: 'footer' | 'inline';
+  heading?: string;
+  blurb?: string;
+}
+const {
+  variant = 'inline',
+  heading = 'Get the free guide',
+  blurb = 'A short, no-pressure resource for thoughtful dog owners. Drop your email and I’ll send it over.',
+} = Astro.props;
+const onTeal = variant === 'footer';
+const action = site.embeds.brevoSignup;
+const wired = Boolean(action);
+---
+
+<div class={onTeal ? 'text-cream' : 'rounded-2xl bg-sage-soft/60 p-7 sm:p-9'}>
+  {
+    !onTeal && (
+      <span class="label-caps text-teal">Free resource</span>
+    )
+  }
+  <h3 class={onTeal ? 'font-display text-h3 text-cream' : 'mt-2 font-display text-h2 text-teal'}>
+    {heading}
+  </h3>
+  <p class={`mt-2 max-w-prose text-caption ${onTeal ? 'text-cream/80' : 'text-ink/75 text-body'}`}>
+    {blurb}
+  </p>
+
+  <form
+    class="mt-4 flex flex-col gap-3 sm:flex-row"
+    action={action || undefined}
+    method="post"
+    {...(wired ? {} : { 'data-placeholder': 'true' })}
+  >
+    <label class="sr-only" for={`email-${variant}`}>Email address</label>
+    <input
+      id={`email-${variant}`}
+      type="email"
+      name="EMAIL"
+      required
+      placeholder="you@example.com"
+      autocomplete="email"
+      class:list={[
+        'w-full rounded-full px-5 py-3 text-base outline-none transition',
+        onTeal
+          ? 'bg-cream/15 text-cream placeholder:text-cream/55 focus:bg-cream/25'
+          : 'border border-ink/15 bg-white text-ink placeholder:text-ink/40 focus:border-teal',
+      ]}
+    />
+    <button
+      type="submit"
+      class:list={['btn shrink-0', onTeal ? 'btn-on-teal' : 'btn-primary']}
+    >
+      Send it to me
+    </button>
+  </form>
+  {
+    !wired && (
+      <p class={`mt-2 text-caption ${onTeal ? 'text-cream/55' : 'text-ink/45'}`}>
+        Email delivery connects once the Brevo list is live.
+      </p>
+    )
+  }
+</div>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  align?: 'left' | 'center';
+}
+const { eyebrow, title, intro, align = 'center' } = Astro.props;
+const center = align === 'center';
+---
+
+<section class="px-5 pt-14 sm:px-8 sm:pt-20">
+  <div class={`mx-auto max-w-3xl ${center ? 'text-center' : ''}`}>
+    {eyebrow && <p class="reveal label-caps text-camel">{eyebrow}</p>}
+    <h1 class="reveal mt-3 font-display text-h1 text-teal sm:text-display">{title}</h1>
+    {
+      intro && (
+        <p class={`reveal mt-5 text-body text-ink/75 sm:text-[1.125rem] ${center ? 'mx-auto max-w-2xl' : 'max-w-prose'}`}>
+          {intro}
+        </p>
+      )
+    }
+  </div>
+</section>

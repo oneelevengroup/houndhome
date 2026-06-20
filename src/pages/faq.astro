@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import EmailSignup from '../components/EmailSignup.astro';
+import CTASection from '../components/CTASection.astro';
+import { faqs } from '../data/faq';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ"
+  description="The questions Taylor answers most about investment, booking, the day-to-day, breeds, after-care, and location."
+  schema={faqSchema}
+>
+  <PageHero
+    eyebrow="Questions, answered"
+    title="The things people ask me most."
+    intro="If you don’t see what you’re wondering about here, just reach out. I’m always happy to talk it through."
+  />
+
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <div class="mx-auto max-w-3xl divide-y divide-ink/10 border-y border-ink/10">
+      {
+        faqs.map((f) => (
+          <details class="group reveal">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-display text-h3 text-teal marker:content-none">
+              <span>{f.q}</span>
+              <svg class="h-5 w-5 shrink-0 text-sage transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </summary>
+            <p class="-mt-1 pb-6 pr-9 text-body text-ink/80">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Soft inline email offer (§7) -->
+  <section class="px-5 pt-16 sm:px-8 sm:pt-20">
+    <div class="reveal mx-auto max-w-3xl">
+      <EmailSignup
+        heading="Not quite ready to reach out?"
+        blurb="Grab the free guide and get a feel for how I think about training. No pressure, unsubscribe anytime."
+      />
+    </div>
+  </section>
+
+  <div class="pt-16"></div>
+  <CTASection />
+  <div class="pt-12"></div>
+</BaseLayout>

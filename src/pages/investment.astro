@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import LineIcon from '../components/LineIcon.astro';
+import CTASection from '../components/CTASection.astro';
+
+const points = [
+  {
+    icon: 'heart',
+    title: 'Every dog is different',
+    body: 'A young puppy building foundations and an adult dog working through reactivity need very different things. Pricing that pretends otherwise does no one any favors.',
+  },
+  {
+    icon: 'compass',
+    title: 'We match, then we talk numbers',
+    body: 'In a short consultation I learn about your dog and your goals, recommend the program that genuinely fits, and walk you through the investment for it. No upselling.',
+  },
+  {
+    icon: 'house',
+    title: 'You’re investing in lasting change',
+    body: 'Every program includes go-home sessions and lifelong support. The work is built to hold, not to send your dog home and hope for the best.',
+  },
+];
+---
+
+<BaseLayout
+  title="Investment"
+  description="Programs are matched to your dog and family in a consultation, so the investment fits what you actually need. Start with a conversation."
+>
+  <PageHero
+    eyebrow="Investment"
+    title="Matched to your dog, not pulled off a shelf."
+    intro="Every dog and every family is a little different, so I match programs in a consultation rather than listing one-size-fits-all packages. Once we talk through what is going on and what you are hoping for, I will walk you through the investment for the program that actually fits."
+  />
+
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <div class="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
+      {
+        points.map((p) => (
+          <div class="reveal rounded-2xl border border-ink/8 bg-white p-7 shadow-card">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-sage-soft/70">
+              <LineIcon name={p.icon as any} class="h-6 w-6 text-teal" />
+            </span>
+            <h2 class="mt-5 font-display text-h3 text-teal">{p.title}</h2>
+            <p class="mt-2 text-caption text-ink/75">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="px-5 pt-14 sm:px-8 sm:pt-16">
+    <p class="reveal mx-auto max-w-prose text-center text-body text-ink/70">
+      Honest and personal beats a price list every time. Tell me about your dog
+      and I’ll give you a clear picture of the right program and what it involves.
+    </p>
+  </section>
+
+  <div class="pt-16"></div>
+  <CTASection
+    heading="Let’s talk about your dog."
+    blurb="A quick consultation is the best way to find the right program and understand the investment. No pressure, just a conversation."
+    primaryLabel="Book a consultation"
+  />
+  <div class="pt-12"></div>
+</BaseLayout>

@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   Design tokens (CLAUDE.md §2). Mirrored in tailwind.config.mjs for utilities;
+   kept here as CSS vars for raw CSS, masks, and SVG fills.
+--------------------------------------------------------------------------- */
+:root {
+  --ink: #2c302f;
+  --teal: #2e4a4e;
+  --teal-deep: #233a3d;
+  --sage: #94a98c;
+  --sage-soft: #dce3d6;
+  --camel: #c9a57b;
+  --cream: #f5f1e8;
+  --white: #ffffff;
+
+  --shadow-card: 0 1px 2px rgba(44, 48, 47, 0.04), 0 8px 24px rgba(44, 48, 47, 0.06);
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-teal;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  /* Open tracking on small all-caps labels (CLAUDE.md §2) */
+  .label-caps {
+    @apply font-body uppercase text-caption;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Visible keyboard focus everywhere (quality floor, §2) */
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect users who don't want motion */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Soft scroll-reveal. Elements start hidden, .is-visible is toggled by an
+     IntersectionObserver. With reduced-motion, items are shown immediately
+     (the observer still adds .is-visible, transitions are neutralized above). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s var(--ease-soft),
+      transform 0.7s var(--ease-soft);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* No-JS / reduced-motion safety: never leave content invisible */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Primary + secondary buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-body font-semibold;
+    @apply px-7 py-3 text-base transition-all duration-300;
+    transition-timing-function: var(--ease-soft);
+  }
+  .btn-primary {
+    @apply bg-teal text-cream shadow-card;
+  }
+  .btn-primary:hover {
+    @apply bg-teal-deep -translate-y-0.5;
+  }
+  .btn-secondary {
+    @apply border border-teal/40 text-teal bg-transparent;
+  }
+  .btn-secondary:hover {
+    @apply border-teal bg-teal/5 -translate-y-0.5;
+  }
+  .btn-on-teal {
+    @apply bg-cream text-teal;
+  }
+  .btn-on-teal:hover {
+    @apply bg-white -translate-y-0.5;
+  }
+
+  .link-underline {
+    @apply relative font-semibold text-teal;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-teal transition-transform duration-300;
+    transition-timing-function: var(--ease-soft);
+  }
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+}
+
+@layer utilities {
+  /* The signature house-arch silhouette as a clip-path. A peaked roofline over
+     a rounded-bottom body, echoing the logo. Used to mask imagery. */
+  .clip-house {
+    clip-path: polygon(
+      50% 0%,
+      100% 34%,
+      100% 100%,
+      0% 100%,
+      0% 34%
+    );
+  }
+}

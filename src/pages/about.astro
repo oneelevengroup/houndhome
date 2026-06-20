@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HouseArch from '../components/HouseArch.astro';
+import LineIcon from '../components/LineIcon.astro';
+import CTASection from '../components/CTASection.astro';
+
+const credibility = [
+  { stat: '13 years', label: 'around dogs of every kind' },
+  { stat: 'GM at 19', label: 'ran a large daycare & boarding facility' },
+  { stat: 'Every breed', label: 'shelters, show dogs, and sport dogs' },
+  { stat: 'For life', label: 'support that doesn’t end at go-home' },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Thirteen years, every kind of dog, and one belief that started it all. Meet Taylor Arnder, owner of Hound & Home."
+>
+  <!-- Hero with portrait -->
+  <section class="px-5 pt-14 sm:px-8 sm:pt-20">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <p class="reveal label-caps text-camel">Our Story · Meet Taylor</p>
+        <h1 class="reveal mt-3 font-display text-h1 text-teal sm:text-display">
+          Thirteen years, every kind of dog, and one belief that started it all.
+        </h1>
+        <p class="reveal mt-5 max-w-prose text-body text-ink/75 sm:text-[1.125rem]">
+          I have spent my life around dogs, and I built Hound &amp; Home to be the
+          place I always wished existed.
+        </p>
+      </div>
+      <div class="reveal mx-auto w-full max-w-sm">
+        <HouseArch class="aspect-[5/6] w-full">
+          <div class="flex flex-col items-center">
+            <LineIcon name="heart" class="h-10 w-10 text-sage" />
+            <p class="mt-3 text-caption font-semibold text-teal">Taylor’s portrait</p>
+            <p class="mt-1 text-[0.75rem] text-ink/45">From the brand shoot</p>
+          </div>
+        </HouseArch>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story body (§6 copy, verbatim) -->
+  <section class="px-5 pt-16 sm:px-8 sm:pt-20">
+    <div class="mx-auto max-w-prose space-y-6 text-body text-ink/85">
+      <p class="reveal">
+        I have spent my life around dogs. Thirteen years of it, across animal
+        shelters, show dogs, sport dogs, and a large daycare and boarding facility
+        I was running as general manager at nineteen. That early responsibility
+        taught me something I have built everything around since: dogs do not need
+        commercialized, one-size-fits-all care. They need individualized attention,
+        and people who understand the why behind their behavior.
+      </p>
+      <p class="reveal">
+        That is where I fell in love with the psychology of dogs, and with training.
+        I do not hand families a cookie-cutter program. I dig into the root of what
+        is actually going on, because a dog who only learns to follow rules has not
+        really changed, and a family who does not understand their dog has not
+        really been helped.
+      </p>
+      <p class="reveal">
+        Hound &amp; Home is the place I always wished existed. A home, not a loud
+        kennel. A space where your dog trains, boards, and plays in a structured,
+        loving environment, then goes home with new skills, a clear plan, and my
+        support for life. I work with every kind of dog, not just the easy ones,
+        and I treat your dog the way I would want mine treated.
+      </p>
+      <p class="reveal font-display text-h3 text-teal">I would love to meet yours.</p>
+    </div>
+  </section>
+
+  <!-- Credibility band -->
+  <section class="px-5 pt-16 sm:px-8 sm:pt-20">
+    <div class="reveal mx-auto grid max-w-5xl gap-6 rounded-[2rem] bg-sage-soft/50 px-6 py-10 sm:grid-cols-2 sm:px-12 lg:grid-cols-4">
+      {
+        credibility.map((c) => (
+          <div>
+            <p class="font-display text-h2 text-teal">{c.stat}</p>
+            <p class="mt-1 text-caption text-ink/70">{c.label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div class="pt-20"></div>
+  <CTASection
+    heading="I would love to meet your dog."
+    blurb="Tell me a little about them and let’s find the right way to work together."
+    primaryLabel="Book a consultation"
+  />
+  <div class="pt-12"></div>
+</BaseLayout>

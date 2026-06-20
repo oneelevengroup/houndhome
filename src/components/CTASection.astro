@@ -1,0 +1,30 @@
+---
+import LineIcon from './LineIcon.astro';
+// Closing CTA band → Booking (the page everything points to, §5).
+interface Props {
+  heading?: string;
+  blurb?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+}
+const {
+  heading = 'Let’s find the right fit for your dog.',
+  blurb = 'Reaching out should be the easy part. Tell me a little about your dog, book a quick consultation, and we’ll go from there.',
+  primaryLabel = 'Start with a conversation',
+  primaryHref = '/booking',
+} = Astro.props;
+---
+
+<section class="px-5 sm:px-8">
+  <div class="reveal relative mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-teal px-6 py-14 text-center text-cream sm:px-12 sm:py-20">
+    <LineIcon name="house" class="mx-auto h-10 w-10 text-sage" />
+    <h2 class="mx-auto mt-5 max-w-2xl font-display text-h1 text-cream">{heading}</h2>
+    <p class="mx-auto mt-4 max-w-xl text-body text-cream/85">{blurb}</p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href={primaryHref} class="btn btn-on-teal">{primaryLabel}</a>
+      <a href="/services" class="btn btn-secondary border-cream/40 text-cream hover:border-cream hover:bg-cream/10">
+        See the programs
+      </a>
+    </div>
+  </div>
+</section>
