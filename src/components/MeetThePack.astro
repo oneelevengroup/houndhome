@@ -1,0 +1,33 @@
+---
+import ImageSlot from './ImageSlot.astro';
+import type { PackDog } from '../data/pack';
+// "Meet the Pack" card (CLAUDE.md §2): a dog on a soft solid backdrop, a tracked
+// lowercase "meet:" eyebrow, and the name large in Fraunces. Repeatable; doubles
+// as an Instagram template, so it stays square and self-contained.
+interface Props {
+  dog: PackDog;
+}
+const { dog } = Astro.props;
+const textTone = dog.onDark ? 'text-cream' : 'text-teal';
+const subTone = dog.onDark ? 'text-cream/70' : 'text-ink/55';
+---
+
+<figure
+  class={`reveal group flex aspect-square flex-col items-center justify-center rounded-2xl ${dog.backdrop} p-6 text-center shadow-card transition-transform duration-300 ease-soft hover:-translate-y-1`}
+>
+  <div class="aspect-square w-[64%] overflow-hidden rounded-full ring-4 ring-white/60">
+    <ImageSlot
+      src={dog.image}
+      alt={`${dog.name}, a ${dog.breed}, during a stay at Hound & Home`}
+      icon={dog.icon}
+      tone={dog.onDark ? 'deep' : 'light'}
+      bare={true}
+      class="h-full w-full"
+    />
+  </div>
+  <figcaption class="mt-4">
+    <span class={`block text-caption lowercase tracking-[0.3em] ${subTone}`}>meet:</span>
+    <span class={`mt-0.5 block font-display text-h1 leading-none ${textTone}`}>{dog.name}</span>
+    <span class={`mt-1.5 block text-[0.75rem] uppercase tracking-wide ${subTone}`}>{dog.breed}</span>
+  </figcaption>
+</figure>

@@ -85,6 +85,16 @@ Motion: minimal and soft. Gentle scroll-reveal on sections, a subtle lift on car
 
 Quality floor: responsive to mobile, visible keyboard focus, real alt text, fast (Lighthouse 90+).
 
+### Art direction & photography
+Confirmed from Taylor's reference set. The thread across her picks: warm, natural light, real dogs and real people, editorial but never staged-corporate, green-forward outdoor settings that reinforce the sage palette. Premium and calm, closer to a countryside retreat than a facility.
+- **Hero and feature imagery:** dogs in motion in lush natural settings, soft overcast or golden light. Aspirational and joyful, not clinical. (ref: doodles running a hedge-lined path)
+- **Lifestyle / About:** Taylor with dogs, candid and warm. This carries the "real human behind it" trust on the About page. (ref: trainer walking a group on pretty leads)
+- **Daycare / Play:** group play energy is welcome, but shot on grass in natural light. Avoid the sterile-turf, big-facility read Taylor explicitly wants to steer clear of.
+- **Show range of breeds, not just doodles.** Working with every kind of dog is her stated differentiator, so the imagery should prove it.
+- **Color grade toward warm naturals** that sit with cream, sage, teal, and camel. No cold or heavily filtered edits.
+
+**Reusable component, "Meet the Pack":** a featured-dog format from her reference set. A dog on a soft solid backdrop, a tracked lowercase eyebrow ("meet:"), and the dog's name large in Fraunces. Build it as a repeatable card; it works as a website gallery feature and doubles as an Instagram template, tying the site to her social.
+
 ---
 
 ## 3. Tech stack & infrastructure
@@ -120,7 +130,7 @@ Footer-only: Privacy Policy + Terms (OEG to provide).
 
 ### Home
 Front door. Job: communicate in 5 seconds that this is a deeply experienced, holistic, home-based alternative to a commercial kennel, then route people to Services or Booking.
-- Hero: house-arch framed image of a calm, happy dog with Taylor. Headline + subhead (Section 6). Primary CTA "Start with a conversation" → Booking. Secondary "See the programs" → Services.
+- Hero: full-bleed editorial photo of dogs in motion in a lush natural setting (see Art Direction), with headline and subhead overlaid. Primary CTA "Start with a conversation" → Booking. Secondary "See the programs" → Services. Use the house-arch motif in supporting sections rather than the hero, so the hero photo can breathe.
 - Play | Stay | Train: three cards, each linking to its service area. This is the structural spine of the brand; mirror it across the site.
 - "Why Hound & Home" band: the differentiators (13 years, every breed, root-cause not one-size-fits-all, enrichment and real home environment, lifelong support).
 - A short Meet Taylor teaser → About.
@@ -141,7 +151,7 @@ Each program gets a short individual page: who it's for, what's included, what t
 Use "Investment," never "price" or "cost." Pricing is inquiry-based for v1: explain the philosophy (every dog and family is different, so programs are matched in a consult), then a single CTA to book a consultation. Do not hardcode numbers until OEG confirms them.
 
 ### Gallery / Past Work
-Grid of real dogs and stays. Build to accept video later (nice-to-have, not v1). House-arch image masks tie it to the brand.
+Grid of real dogs and stays. Build to accept video later (nice-to-have, not v1). House-arch image masks tie it to the brand. Include the "Meet the Pack" featured-dog component (see Art Direction) as a repeatable card, also usable on Home and as a social template.
 
 ### Testimonials
 Card or quote layout. Placeholder structure; OEG collects real quotes.
@@ -221,6 +231,7 @@ I would love to meet yours.
 4. **Which services are live at launch** vs "coming soon" (daycare, boarding, virtual courses).
 5. **Brand shoot timing.** Taylor wants a shoot before launch. Site uses tasteful placeholders until real photos land; build image slots so the swap is painless.
 6. **Reversed (cream) logo** for dark/teal sections, and SVG vectorization, both post-launch nice-to-haves.
+7. **Logo direction (flag).** One of Taylor's references is a vintage circular badge logo (Mountain Hound, Est. 2020). It pulls against the holistic, feminine, clean personality you both locked and against the finished Hound & Home logo. Confirm with Taylor whether she wants to revisit the logo or is simply responding to the warm, established, heritage feel. If the latter (recommended), honor it through photography, an optional etched-illustration texture, and an "Est. 2020" credibility touch, while keeping the current logo as primary. Do not change the logo without sign-off.
 
 ---
 

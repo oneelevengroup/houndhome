@@ -1,0 +1,70 @@
+---
+import LineIcon from './LineIcon.astro';
+// A swappable image slot (CLAUDE.md §9.5). Pass `src` for a real photo; until
+// the brand shoot lands it renders a warm, natural-light placeholder so the
+// layout reads as intentional. Art direction §2: warm naturals, green-forward,
+// never clinical. Swapping a photo in is just adding `src`.
+interface Props {
+  src?: string;
+  alt: string;
+  caption?: string;
+  icon?: 'paw' | 'leaf' | 'house' | 'heart' | 'bone' | 'compass';
+  class?: string;
+  /** darker tint for full-bleed heroes where text overlays the image */
+  tone?: 'light' | 'deep';
+  rounded?: boolean;
+  /** icon only, no captions — for small/tight crops like Meet the Pack */
+  bare?: boolean;
+}
+const {
+  src,
+  alt,
+  caption,
+  icon = 'paw',
+  class: className = '',
+  tone = 'light',
+  rounded = false,
+  bare = false,
+} = Astro.props;
+const radius = rounded ? 'rounded-2xl' : '';
+---
+
+<div class={`image-slot relative overflow-hidden ${radius} ${className}`}>
+  {
+    src ? (
+      <img src={src} alt={alt} class="h-full w-full object-cover" loading="lazy" />
+    ) : (
+      <div
+        class={`flex h-full w-full flex-col items-center justify-center ${
+          tone === 'deep' ? 'placeholder-deep text-cream/85' : 'placeholder-light text-teal/70'
+        }`}
+        role="img"
+        aria-label={alt}
+      >
+        <LineIcon name={icon} class={`${bare ? 'h-8 w-8' : 'h-10 w-10'} ${tone === 'deep' ? 'text-cream/80' : 'text-sage'}`} />
+        {!bare && caption && <p class="mt-3 px-6 text-center text-caption font-semibold">{caption}</p>}
+        {
+          !bare && (
+            <p class={`mt-1 text-[0.72rem] ${tone === 'deep' ? 'text-cream/55' : 'text-ink/40'}`}>
+              From the brand shoot
+            </p>
+          )
+        }
+      </div>
+    )
+  }
+</div>
+
+<style>
+  /* Warm, natural-light gradients standing in for photography. */
+  .placeholder-light {
+    background:
+      radial-gradient(120% 90% at 22% 18%, rgba(201, 165, 123, 0.28), transparent 60%),
+      linear-gradient(160deg, #dce3d6 0%, #eef0e6 45%, #f5f1e8 100%);
+  }
+  .placeholder-deep {
+    background:
+      radial-gradient(130% 100% at 28% 22%, rgba(148, 169, 140, 0.45), transparent 55%),
+      linear-gradient(155deg, #2e4a4e 0%, #233a3d 60%, #1c2f31 100%);
+  }
+</style>
