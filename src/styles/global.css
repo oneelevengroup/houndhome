@@ -37,6 +37,14 @@
     text-wrap: balance;
   }
 
+  /* Main headings (page/hero h1 + section h2) set in all caps. Marcellus is a
+     Roman titling face built for caps; a little tracking lets them breathe.
+     Smaller h3/h4 (card titles, program names, FAQ, dog names) stay title case. */
+  h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
   /* Open tracking on small all-caps labels (CLAUDE.md §2) */
   .label-caps {
     @apply font-body uppercase text-caption;

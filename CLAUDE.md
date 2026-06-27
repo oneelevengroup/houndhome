@@ -63,7 +63,7 @@ colors: {
 ```
 
 ### Typography
-- **Display / headings:** Marcellus (classical roman titling serif). Single 400 weight, so headings render at 400, never faux-bolded. Elegant and calm.
+- **Display / headings:** Marcellus (classical roman titling serif). Single 400 weight, so headings render at 400, never faux-bolded. Elegant and calm. Main headings (page/hero `h1` + section `h2`) are set in all caps with light tracking; smaller `h3`/`h4` (card titles, program names, FAQ, dog names) stay title case.
 - **Body / UI:** DM Sans. Weights 400/500/600/700.
 - Both are free Google Fonts; self-host via `@fontsource/marcellus` and `@fontsource/dm-sans` for speed and privacy.
 - Type scale (rem): 3.5 / 2.5 / 1.75 / 1.25 (headings) and 1.0 body, 0.875 captions. Generous line-height on body (1.6). Letter-spacing slightly open on small all-caps labels.
