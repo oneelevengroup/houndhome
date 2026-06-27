@@ -6,7 +6,7 @@ marketing site built to the spec in [`CLAUDE.md`](./CLAUDE.md) (the OEG build br
 ## Stack
 
 - **[Astro](https://astro.build) 4** + **[Tailwind CSS](https://tailwindcss.com) 3** — static, fast, SEO-friendly
-- Self-hosted fonts: **Fraunces** (display) + **Mulish** (body) via `@fontsource`
+- Self-hosted fonts: **Marcellus** (display) + **DM Sans** (body) via `@fontsource`
 - **No backend.** Dynamic pieces are third-party embeds (HoneyBook, Calendly, Brevo)
 - Deploys on **Vercel** (auto-detects Astro; build `astro build`, output `dist/`)
 

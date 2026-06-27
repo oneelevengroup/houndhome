@@ -11,12 +11,12 @@ export default {
         cream: '#F5F1E8',
       },
       fontFamily: {
-        display: ['"Fraunces Variable"', 'Fraunces', 'Georgia', 'serif'],
-        body: ['Mulish', 'system-ui', 'sans-serif'],
+        display: ['Marcellus', 'Georgia', 'serif'],
+        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         // Type scale from CLAUDE.md §2
-        display: ['3.5rem', { lineHeight: '1.05', letterSpacing: '-0.01em' }],
+        display: ['3.5rem', { lineHeight: '1.08', letterSpacing: '0.005em' }],
         h1: ['2.5rem', { lineHeight: '1.1' }],
         h2: ['1.75rem', { lineHeight: '1.2' }],
         h3: ['1.25rem', { lineHeight: '1.3' }],

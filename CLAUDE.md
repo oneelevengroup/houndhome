@@ -63,9 +63,9 @@ colors: {
 ```
 
 ### Typography
-- **Display / headings:** Fraunces (soft serif, variable). Use the optical-size axis for large headings. Weights 400–600. This is the "elevated casualness" Taylor loves.
-- **Body / UI:** Mulish. Weights 400/500/600.
-- Both are free Google Fonts; self-host via `@fontsource/fraunces` and `@fontsource/mulish` for speed and privacy.
+- **Display / headings:** Marcellus (classical roman titling serif). Single 400 weight, so headings render at 400, never faux-bolded. Elegant and calm.
+- **Body / UI:** DM Sans. Weights 400/500/600/700.
+- Both are free Google Fonts; self-host via `@fontsource/marcellus` and `@fontsource/dm-sans` for speed and privacy.
 - Type scale (rem): 3.5 / 2.5 / 1.75 / 1.25 (headings) and 1.0 body, 0.875 captions. Generous line-height on body (1.6). Letter-spacing slightly open on small all-caps labels.
 
 ### Voice & tone

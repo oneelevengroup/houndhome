@@ -4,12 +4,13 @@ import Footer from '../components/Footer.astro';
 import { site, fullAddress } from '../data/site';
 import '../styles/global.css';
 
-// Self-hosted fonts (CLAUDE.md §2). Fraunces variable for the optical-size axis;
-// Mulish at 400/500/600 for body and UI.
-import '@fontsource-variable/fraunces';
-import '@fontsource/mulish/400.css';
-import '@fontsource/mulish/500.css';
-import '@fontsource/mulish/600.css';
+// Self-hosted fonts. Marcellus (single 400 weight) for display/headings;
+// DM Sans at 400/500/600/700 for body and UI.
+import '@fontsource/marcellus';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
 
 interface Props {
   title?: string;
