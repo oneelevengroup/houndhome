@@ -37,11 +37,16 @@ export const site = {
     honeybookContact: '', // HoneyBook contact form embed URL
     calendly: '', // Calendly consult scheduler URL
     brevoSignup: '', // Brevo email-capture form action
+    // Coming-soon landing lead capture. Paste the Typeform URL
+    // (e.g. https://form.typeform.com/to/XXXXXX) once the client creates it.
+    typeform: '',
   },
 };
 
+// NOTE: during the coming-soon phase, "/" is the landing page and the full home
+// lives at "/home". Revert Home's href to "/" at launch (see README).
 export const nav = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/home' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Investment', href: '/investment' },

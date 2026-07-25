@@ -38,8 +38,22 @@ public/
 All live in **`src/data/site.ts`** unless noted. They are clearly marked and the
 UI shows honest placeholders until each is set (no silently-broken forms).
 
+### Coming-soon phase (current)
+
+`/` serves the standalone **coming-soon landing** (`src/pages/index.astro`) — no
+nav, borzoi loader, Typeform lead capture. The full site is built and lives at
+`/home`, `/about`, `/services`, etc. (kept `noindex` on `/home` for now) so we
+keep building behind the landing.
+
+- **Lead form:** paste the client's Typeform URL into `site.ts` `embeds.typeform`.
+  Until then the landing shows a phone fallback.
+- **To launch the full site:** move `src/pages/home.astro` back to
+  `src/pages/index.astro` (replacing the landing), revert the `Home` nav href in
+  `site.ts` from `/home` to `/`, and remove the `noindex`.
+
 | What | Where | Notes |
 |------|-------|-------|
+| Typeform lead form (landing) | `site.ts` `embeds.typeform` | Coming-soon capture |
 | Domain / canonical URL | `astro.config.mjs` `site`, `site.ts` `url`/`domain` | Once domain is secured (§9) |
 | Brand email | `site.ts` `email` | Currently a placeholder |
 | Instagram handle | `site.ts` `instagram` | Move from "Taylor Trains Doodles" (§9) |

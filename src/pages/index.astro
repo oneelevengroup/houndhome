@@ -1,195 +1,91 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HouseArch from '../components/HouseArch.astro';
-import ImageSlot from '../components/ImageSlot.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import MeetThePack from '../components/MeetThePack.astro';
-import LineIcon from '../components/LineIcon.astro';
-import CTASection from '../components/CTASection.astro';
-import { pillars } from '../data/services';
-import { testimonials } from '../data/testimonials';
-import { pack } from '../data/pack';
+import BorzoiBadge from '../components/BorzoiBadge.astro';
+import BorzoiLoader from '../components/BorzoiLoader.astro';
+import { site, fullAddress } from '../data/site';
 
-const why = [
-  {
-    icon: 'compass',
-    title: 'Thirteen years, every kind of dog',
-    body: 'Across shelters, show dogs, sport dogs, and a large facility she ran as GM at nineteen. Real depth, not a weekend certification.',
-  },
-  {
-    icon: 'heart',
-    title: 'Root cause, not one-size-fits-all',
-    body: 'I dig into the why behind the behavior. A dog who only learns to follow rules has not really changed.',
-  },
-  {
-    icon: 'leaf',
-    title: 'Enrichment in a real home',
-    body: 'Breed-fulfilling activities, hikes and trail time, evening brush-outs, and calm rest. Structured, never a free-for-all.',
-  },
-  {
-    icon: 'house',
-    title: 'Support for life',
-    body: 'Go-home sessions, check-ins, and guidance that lasts well beyond the stay. You are never on your own afterward.',
-  },
-];
-
-const homeQuotes = testimonials.slice(0, 2);
+const typeform = site.embeds.typeform;
+const formWired = Boolean(typeform);
 ---
 
-<BaseLayout>
-  <!-- Hero: full-bleed editorial photo with overlaid text (CLAUDE.md §5).
-       House-arch motif lives in supporting sections below so the photo breathes. -->
-  <section class="relative isolate overflow-hidden">
-    <div class="absolute inset-0 -z-10">
-      <ImageSlot
-        src={undefined}
-        alt="Dogs running together along a hedge-lined path in warm, natural light"
-        tone="deep"
-        blank={true}
-        class="h-full w-full"
-      />
-      <div class="absolute inset-0 bg-gradient-to-r from-ink/80 via-teal-deep/55 to-teal/20"></div>
+<BaseLayout
+  title="Coming Soon"
+  description="Hound & Home, boutique dog daycare, boarding, and training in Ararat, VA, is coming soon. Leave your details and we'll reach out the moment we open."
+  bare={true}
+>
+  <div class="relative min-h-screen overflow-hidden">
+    <!-- soft glow -->
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh]"
+      style="background: radial-gradient(70% 60% at 50% 0%, rgba(148,169,140,0.22), transparent 70%);"
+    >
     </div>
 
-    <div class="mx-auto max-w-6xl px-5 py-28 sm:px-8 sm:py-36 lg:py-44">
-      <div class="max-w-xl">
-        <p class="reveal label-caps text-camel">Play · Stay · Train</p>
-        <h1 class="reveal mt-4 font-display text-display leading-[1.02] text-cream">
-          A real home for your dog. Not a kennel.
-        </h1>
-        <p class="reveal mt-6 max-w-prose text-body text-cream/85 sm:text-[1.18rem]">
-          Boutique daycare, boarding, and training from a trainer with thirteen
-          years and a belief that no two dogs are the same. Structured, enriching,
-          and genuinely safe.
-        </p>
-        <div class="reveal mt-8 flex flex-col gap-3 sm:flex-row">
-          <a href="/booking" class="btn btn-on-teal">Start with a conversation</a>
-          <a
-            href="/services"
-            class="btn btn-secondary border-cream/50 text-cream hover:border-cream hover:bg-cream/10"
-          >
-            See the programs
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-5 py-16 text-center sm:px-8">
+      <!-- Emblem + wordmark -->
+      <BorzoiBadge class="h-28 w-28 text-teal sm:h-32 sm:w-32" />
+      <h1 class="mt-6 font-display text-h1 text-teal sm:text-display">Hound &amp; Home</h1>
+      <p class="mt-2 label-caps text-sage">Training · Daycare · Boarding</p>
+      <p class="mt-1 text-[0.72rem] uppercase tracking-[0.22em] text-ink/40">
+        Ararat, Virginia · Est. 2020
+      </p>
 
-  <!-- Play | Stay | Train -->
-  <section class="px-5 pt-20 sm:px-8 sm:pt-28">
-    <div class="mx-auto max-w-6xl">
-      <div class="reveal mx-auto max-w-2xl text-center">
-        <h2 class="font-display text-h1 text-teal">Three ways your dog thrives here</h2>
-        <p class="mt-4 text-body text-ink/75">
-          The spine of everything we do. Wherever your dog is today, there’s a
-          thoughtful place to start.
-        </p>
-      </div>
-      <div class="mt-12 grid gap-6 md:grid-cols-3">
-        {pillars.map((pillar) => <ServiceCard pillar={pillar} />)}
-      </div>
-    </div>
-  </section>
+      <!-- Headline -->
+      <h2 class="mt-10 font-display text-h2 text-teal sm:text-h1">
+        A real home for your dog is almost here.
+      </h2>
+      <p class="mt-4 max-w-xl text-body text-ink/75">
+        Boutique daycare, boarding, and training from a trainer with thirteen
+        years and a belief that no two dogs are the same. Our full site is on its
+        way. Leave your details and we will reach out the moment we open.
+      </p>
 
-  <!-- Why Hound & Home -->
-  <section class="px-5 pt-20 sm:px-8 sm:pt-28">
-    <div class="mx-auto max-w-6xl">
-      <div class="reveal mx-auto max-w-2xl text-center">
-        <p class="label-caps text-camel">Why Hound &amp; Home</p>
-        <h2 class="mt-3 font-display text-h1 text-teal">Not just another trainer.</h2>
+      <!-- Borzoi loader -->
+      <div class="mt-12 w-full">
+        <BorzoiLoader />
       </div>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2">
+
+      <!-- Lead capture -->
+      <div class="mt-14 w-full">
         {
-          why.map((item) => (
-            <div class="reveal flex gap-5 rounded-2xl border border-ink/8 bg-white p-7 shadow-card">
-              <span class="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-soft/70">
-                <LineIcon name={item.icon as any} class="h-6 w-6 text-teal" />
-              </span>
-              <div>
-                <h3 class="font-display text-h3 text-teal">{item.title}</h3>
-                <p class="mt-2 text-caption text-ink/75">{item.body}</p>
-              </div>
+          formWired ? (
+            <div class="overflow-hidden rounded-2xl border border-ink/8 bg-white shadow-card">
+              <iframe
+                src={typeform}
+                title="Get in touch with Hound & Home"
+                loading="lazy"
+                class="w-full"
+                style="height:520px;border:0;"
+              />
             </div>
-          ))
+          ) : (
+            <div class="rounded-2xl border border-dashed border-teal/25 bg-white/70 p-8 text-center sm:p-10">
+              <h3 class="font-display text-h3 text-teal">Be the first to know</h3>
+              <p class="mx-auto mt-2 max-w-md text-caption text-ink/70">
+                Our quick contact form connects here shortly. In the meantime,
+                reach out directly and we will save you a spot.
+              </p>
+              <div class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <a href={site.phoneHref} class="btn btn-primary">Call or text {site.phone}</a>
+              </div>
+              <p class="mt-3 text-[0.72rem] uppercase tracking-wide text-ink/35">
+                Contact form connecting soon
+              </p>
+            </div>
+          )
         }
       </div>
-    </div>
-  </section>
 
-  <!-- Meet the Pack (CLAUDE.md §2 art direction) -->
-  <section class="px-5 pt-20 sm:px-8 sm:pt-28">
-    <div class="mx-auto max-w-6xl">
-      <div class="reveal flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="label-caps text-camel">Meet the Pack</p>
-          <h2 class="mt-3 font-display text-h1 text-teal">Every kind of dog, welcome here.</h2>
-        </div>
-        <a href="/gallery" class="hidden link-underline sm:inline-flex">See more of the pack</a>
-      </div>
-      <div class="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4">
-        {pack.map((dog) => <MeetThePack dog={dog} />)}
-      </div>
-      <div class="reveal mt-8 text-center sm:hidden">
-        <a href="/gallery" class="link-underline">See more of the pack</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Meet Taylor teaser -->
-  <section class="px-5 pt-20 sm:px-8 sm:pt-28">
-    <div class="reveal mx-auto grid max-w-5xl items-center gap-8 overflow-hidden rounded-[2rem] bg-sage-soft/50 p-8 sm:p-12 lg:grid-cols-[0.8fr_1.2fr]">
-      <div class="mx-auto w-full max-w-[15rem]">
-        <HouseArch class="aspect-square w-full" outline="teal">
-          <LineIcon name="heart" class="h-10 w-10 text-sage" />
-        </HouseArch>
-      </div>
-      <div>
-        <p class="label-caps text-teal">Meet Taylor</p>
-        <h2 class="mt-2 font-display text-h1 text-teal">The person behind the home.</h2>
-        <p class="mt-4 max-w-prose text-body text-ink/80">
-          Taylor Arnder has spent thirteen years learning what dogs actually need:
-          individualized attention, and people who understand the why behind their
-          behavior. Hound &amp; Home is the place she always wished existed.
+      <!-- Minimal footer, no navigation -->
+      <div class="mt-16 flex flex-col items-center gap-1 text-caption text-ink/55">
+        <p>{fullAddress}</p>
+        <p>
+          <a href={site.phoneHref} class="link-underline">{site.phone}</a>
         </p>
-        <a href="/about" class="mt-6 inline-flex items-center gap-2 link-underline">
-          Read her story
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="13 6 19 12 13 18"></polyline>
-          </svg>
-        </a>
+        <p class="mt-3 text-[0.72rem] text-ink/35">
+          &copy; {new Date().getFullYear()} Hound &amp; Home
+        </p>
       </div>
     </div>
-  </section>
-
-  <!-- Testimonials teaser -->
-  <section class="px-5 pt-20 sm:px-8 sm:pt-28">
-    <div class="mx-auto max-w-5xl">
-      <div class="reveal mx-auto max-w-2xl text-center">
-        <p class="label-caps text-camel">In their words</p>
-        <h2 class="mt-3 font-display text-h1 text-teal">Families who trusted the process.</h2>
-      </div>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2">
-        {
-          homeQuotes.map((t) => (
-            <figure class="reveal rounded-2xl border border-ink/8 bg-white p-7 shadow-card">
-              <LineIcon name="paw" class="h-7 w-7 text-sage" />
-              <blockquote class="mt-4 text-body text-ink/85">“{t.quote}”</blockquote>
-              <figcaption class="mt-5 text-caption font-semibold text-teal">
-                {t.author}
-                <span class="font-normal text-ink/55"> · {t.dog}, {t.program}</span>
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
-      <div class="reveal mt-8 text-center">
-        <a href="/testimonials" class="btn btn-secondary">Read more stories</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="pt-20"></div>
-  <CTASection />
-  <div class="pt-12"></div>
+  </div>
 </BaseLayout>
