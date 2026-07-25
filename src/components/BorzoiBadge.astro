@@ -1,63 +1,38 @@
 ---
-// Circular badge emblem echoing the new logo: a borzoi standing beneath a peaked
-// roofline, inside a ring. Line-art in the brand's single-weight stroke. The
-// "HOUND & HOME" wordmark is rendered as HTML alongside for crisp web type.
+import BorzoiRunner from './BorzoiRunner.astro';
+// Circular badge emblem echoing the new logo: a borzoi beneath a peaked roofline,
+// inside a ring. The ring + roof are line-art; the borzoi reuses the filled
+// galloping silhouette so it reads cleanly at any size. Colour via currentColor.
 interface Props {
   class?: string;
 }
 const { class: className = '' } = Astro.props;
 ---
 
-<svg
-  viewBox="0 0 220 220"
-  class={className}
-  role="img"
-  aria-label="Hound & Home emblem: a borzoi beneath a rooflined home"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2.4"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <!-- Ring -->
-  <circle cx="110" cy="110" r="98" stroke-width="2.4" />
+<div class={`relative ${className}`}>
+  <svg
+    viewBox="0 0 220 220"
+    class="absolute inset-0 h-full w-full"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Ring -->
+    <circle cx="110" cy="110" r="98" />
+    <!-- Peaked roofline (the house motif) with short eaves -->
+    <path d="M58 104 L110 62 L162 104" stroke-width="2.8" />
+    <path d="M66 99 L66 120" />
+    <path d="M154 99 L154 120" />
+  </svg>
 
-  <!-- Peaked roofline (the house motif) -->
-  <path d="M52 108 L110 66 L168 108" stroke-width="2.8" />
-  <path d="M62 101 L62 150" />
-  <path d="M158 101 L158 150" />
+  <!-- Borzoi (filled) sitting under the roof -->
+  <div class="absolute left-1/2 top-[54%] w-[56%] -translate-x-1/2">
+    <BorzoiRunner class="h-auto w-full" />
+  </div>
 
-  <!-- Standing borzoi, facing right -->
-  <g stroke-width="2.4">
-    <!-- Body + neck + head + tail as one continuous line -->
-    <path
-      d="M150 150
-         C 150 132, 150 120, 150 112
-         C 150 104, 149 98, 144 96
-         C 138 94, 132 96, 126 100
-         C 116 106, 108 106, 100 102
-         C 92 98, 84 96, 78 100
-         C 74 103, 74 108, 74 114"
-    />
-    <!-- Topline: rump over roached back, up the arched neck to the head -->
-    <path
-      d="M74 150
-         C 74 128, 72 108, 78 100
-         C 74 96, 68 92, 62 96
-         C 56 100, 54 108, 58 112
-         M78 100
-         C 86 78, 96 66, 112 62
-         C 122 60, 128 58, 132 52
-         C 134 48, 135 44, 138 44
-         C 142 44, 146 47, 148 52
-         C 150 58, 149 64, 146 68
-         C 143 72, 140 74, 138 78"
-    />
-    <!-- Legs -->
-    <path d="M132 112 L134 150" />
-    <path d="M120 112 L118 150" />
-    <path d="M86 112 L88 150" />
-    <path d="M98 110 L96 150" />
-  </g>
-</svg>
+  <span class="sr-only">Hound &amp; Home emblem: a borzoi beneath a rooflined home</span>
+</div>
