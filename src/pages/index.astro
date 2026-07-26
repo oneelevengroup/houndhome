@@ -13,11 +13,13 @@ const formWired = Boolean(typeform);
   ogImage="/assets/brand/houndhome-logo.jpeg"
   bare={true}
 >
-  <div class="relative min-h-screen overflow-hidden">
-    <!-- soft glow -->
+  <!-- Landing bg matches the logo JPEG's cream (#f5efe4) so the logo merges
+       seamlessly, no visible box. -->
+  <div class="relative min-h-screen overflow-hidden bg-[#f5efe4]">
+    <!-- soft glow, kept low so it never sits behind the logo -->
     <div
-      class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[60vh]"
-      style="background: radial-gradient(70% 60% at 50% 0%, rgba(148,169,140,0.22), transparent 70%);"
+      class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[45vh]"
+      style="background: radial-gradient(60% 55% at 50% 100%, rgba(148,169,140,0.16), transparent 72%);"
     >
     </div>
 
@@ -29,7 +31,7 @@ const formWired = Boolean(typeform);
         alt="Hound &amp; Home — Training, Daycare, Boarding"
         width="1650"
         height="2048"
-        class="h-auto w-64 mix-blend-multiply sm:w-72"
+        class="h-auto w-64 sm:w-72"
       />
       <p class="mt-3 text-[0.72rem] uppercase tracking-[0.22em] text-ink/45">
         Ararat, Virginia · Est. 2020
