@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BorzoiBadge from '../components/BorzoiBadge.astro';
 import BorzoiLoader from '../components/BorzoiLoader.astro';
 import { site, fullAddress } from '../data/site';
 
@@ -11,6 +10,7 @@ const formWired = Boolean(typeform);
 <BaseLayout
   title="Coming Soon"
   description="Hound & Home, boutique dog daycare, boarding, and training in Ararat, VA, is coming soon. Leave your details and we'll reach out the moment we open."
+  ogImage="/assets/brand/houndhome-logo.jpeg"
   bare={true}
 >
   <div class="relative min-h-screen overflow-hidden">
@@ -22,11 +22,16 @@ const formWired = Boolean(typeform);
     </div>
 
     <div class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-5 py-16 text-center sm:px-8">
-      <!-- Emblem + wordmark -->
-      <BorzoiBadge class="h-28 w-28 text-teal sm:h-32 sm:w-32" />
-      <h1 class="mt-6 font-display text-h1 text-teal sm:text-display">Hound &amp; Home</h1>
-      <p class="mt-2 label-caps text-sage">Training · Daycare · Boarding</p>
-      <p class="mt-1 text-[0.72rem] uppercase tracking-[0.22em] text-ink/40">
+      <!-- Logo (exact badge lockup) -->
+      <h1 class="sr-only">Hound &amp; Home</h1>
+      <img
+        src="/assets/brand/houndhome-logo.jpeg"
+        alt="Hound &amp; Home — Training, Daycare, Boarding"
+        width="1650"
+        height="2048"
+        class="h-auto w-64 mix-blend-multiply sm:w-72"
+      />
+      <p class="mt-3 text-[0.72rem] uppercase tracking-[0.22em] text-ink/45">
         Ararat, Virginia · Est. 2020
       </p>
 
