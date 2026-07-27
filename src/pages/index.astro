@@ -1,18 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PawLoader from '../components/PawLoader.astro';
-import { site, fullAddress } from '../data/site';
+import LineIcon from '../components/LineIcon.astro';
+import { site } from '../data/site';
 
 const typeform = site.embeds.typeform;
 const formWired = Boolean(typeform);
+const year = new Date().getFullYear();
 ---
 
 <BaseLayout
-  title="Coming Soon"
-  description="Hound & Home, boutique dog daycare, boarding, and training in Ararat, VA, is coming soon. Leave your details and we'll reach out the moment we open."
+  title="New Site Coming Soon"
+  description="Hound & Home is a boutique dog training, daycare, and boarding service located in Virginia and serving VA and NC, with convenient pick-up. We're open now; our new website is on its way."
   ogImage="/assets/brand/houndhome-logo.png"
   bare={true}
 >
+  <!-- Top service-area bar -->
+  <div class="w-full bg-teal text-cream">
+    <p class="mx-auto max-w-6xl px-5 py-2 text-center text-[0.72rem] uppercase tracking-[0.22em]">
+      Serving Virginia &amp; North Carolina
+    </p>
+  </div>
+
   <div class="relative min-h-screen overflow-hidden">
     <!-- soft sage glow (logo is transparent, so it sits cleanly on top) -->
     <div
@@ -22,7 +31,7 @@ const formWired = Boolean(typeform);
     </div>
 
     <div class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center px-5 py-16 text-center sm:px-8">
-      <!-- Logo (exact badge lockup) -->
+      <!-- Logo (transparent) -->
       <h1 class="sr-only">Hound &amp; Home</h1>
       <img
         src="/assets/brand/houndhome-logo.png"
@@ -31,19 +40,23 @@ const formWired = Boolean(typeform);
         height="900"
         class="h-auto w-64 sm:w-72"
       />
-      <p class="mt-3 text-[0.72rem] uppercase tracking-[0.22em] text-ink/45">
-        Ararat, Virginia · Est. 2020
-      </p>
 
       <!-- Headline -->
-      <h2 class="mt-10 font-display text-h2 text-teal sm:text-h1">
-        A real home for your dog is almost here.
+      <h2 class="mt-8 font-display text-h2 text-teal sm:text-h1">
+        Training · Daycare · Boarding
       </h2>
       <p class="mt-4 max-w-xl text-body text-ink/75">
-        Boutique daycare, boarding, and training from a trainer with thirteen
-        years and a belief that no two dogs are the same. Our full site is on its
-        way. Leave your details and we will reach out the moment we open.
+        Boutique dog training, daycare, and boarding from a trainer with thirteen
+        years and a belief that no two dogs are the same. We are open and
+        welcoming new pups now. Our brand new website is on its way, so leave your
+        details below and we will be right in touch.
       </p>
+
+      <!-- Convenient pick-up -->
+      <div class="mt-6 inline-flex items-center gap-2.5 rounded-full bg-sage-soft/70 px-5 py-2.5 text-caption font-semibold text-teal">
+        <LineIcon name="paw" class="h-5 w-5 shrink-0 text-teal" />
+        Convenient pick-up available. We will come get your pup from you.
+      </div>
 
       <!-- Paw-print loader -->
       <div class="mt-12 w-full">
@@ -65,10 +78,11 @@ const formWired = Boolean(typeform);
             </div>
           ) : (
             <div class="rounded-2xl border border-dashed border-teal/25 bg-white/70 p-8 text-center sm:p-10">
-              <h3 class="font-display text-h3 text-teal">Be the first to know</h3>
+              <h3 class="font-display text-h3 text-teal">Ready to get started?</h3>
               <p class="mx-auto mt-2 max-w-md text-caption text-ink/70">
-                Our quick contact form connects here shortly. In the meantime,
-                reach out directly and we will save you a spot.
+                Have a question or want to book your pup in? Our quick contact form
+                lands here shortly. In the meantime, reach out directly and we will
+                take great care of you both.
               </p>
               <div class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a href={site.phoneHref} class="btn btn-primary">Call or text {site.phone}</a>
@@ -83,12 +97,12 @@ const formWired = Boolean(typeform);
 
       <!-- Minimal footer, no navigation -->
       <div class="mt-16 flex flex-col items-center gap-1 text-caption text-ink/55">
-        <p>{fullAddress}</p>
+        <p>Located in Virginia</p>
         <p>
           <a href={site.phoneHref} class="link-underline">{site.phone}</a>
         </p>
-        <p class="mt-3 text-[0.72rem] text-ink/35">
-          &copy; {new Date().getFullYear()} Hound &amp; Home
+        <p class="mt-3 text-[0.72rem] uppercase tracking-[0.18em] text-ink/35">
+          &copy; {year} Hound &amp; Home · Est. 2020
         </p>
       </div>
     </div>
