@@ -52,6 +52,18 @@ const year = new Date().getFullYear();
         details below and we will be right in touch.
       </p>
 
+      <!-- Primary CTA -->
+      <a href="#inquire" class="inquire-btn group mt-8">
+        <span class="relative z-10 flex items-center gap-2.5">
+          <LineIcon name="paw" class="h-5 w-5" />
+          Inquire Now
+          <svg class="h-4 w-4 transition-transform duration-300 ease-soft group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="13 6 19 12 13 18"></polyline>
+          </svg>
+        </span>
+      </a>
+
       <!-- Convenient pick-up -->
       <div class="mt-6 inline-flex items-center gap-2.5 rounded-full bg-sage-soft/70 px-5 py-2.5 text-caption font-semibold text-teal">
         <LineIcon name="paw" class="h-5 w-5 shrink-0 text-teal" />
@@ -93,7 +105,7 @@ const year = new Date().getFullYear();
       </section>
 
       <!-- Lead capture -->
-      <div class="mt-16 w-full max-w-xl sm:mt-20">
+      <div id="inquire" class="mt-16 w-full max-w-xl scroll-mt-8 sm:mt-20">
         {
           formWired ? (
             <div class="overflow-hidden rounded-2xl border border-ink/8 bg-white shadow-card">
@@ -137,3 +149,51 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  /* "Inquire Now" CTA: teal gradient pill with a soft lift and a slow shimmer. */
+  .inquire-btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.95rem 2.1rem;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+    box-shadow: 0 6px 20px rgba(46, 74, 78, 0.22);
+    transition:
+      transform 0.3s var(--ease-soft),
+      box-shadow 0.3s var(--ease-soft);
+  }
+  .inquire-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(46, 74, 78, 0.3);
+  }
+  .inquire-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -40%;
+    width: 35%;
+    z-index: 0;
+    background: linear-gradient(100deg, transparent, rgba(245, 241, 232, 0.45), transparent);
+    transform: skewX(-20deg);
+    animation: inquire-shimmer 3.6s ease-in-out infinite;
+  }
+  @keyframes inquire-shimmer {
+    0% { left: -40%; }
+    55%, 100% { left: 130%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .inquire-btn::before { animation: none; opacity: 0; }
+    .inquire-btn:hover { transform: none; }
+  }
+</style>
